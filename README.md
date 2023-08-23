@@ -49,3 +49,7 @@ and due to lack of time just leave it as it where) Tests are my weak side :(
 
 Have a nice day and good luck!
 
+
+
+
+P.S. I just realized that I’ve totally forgotten about versions support. I barely know that version is included in the header of an API HTML response received from the server. Nonetheless, it was a part of the task and it misses,in any case, I will deal with it 
