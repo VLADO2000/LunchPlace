@@ -27,6 +27,16 @@ token expires each hour and refresh could be done during one day (24h)
 
 Main endpoints to interact with api are:
 http://127.0.0.1:8000/api/v1/user/ (allowed to everyone)
+Json example to build a user via API:
+ {
+        "name": "Test",
+        "password": "test",
+        "email": "test@testua.com",
+        "role": 0,
+        "is_active": true
+    }
+
+
 http://127.0.0.1:8000/api/v1/restaurant/ (allowed to view by staff and manage by restauranters)
 
 http://127.0.0.1:8000/api/v1/menu/  (authorized users(staff) could view here menus which have been added 
