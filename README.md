@@ -17,17 +17,9 @@ Insomnia etc.
 only view http://127.0.0.1:8000/api/v1/user/ will allow unauthorized users to perfrom actions, it had been made 
 for brevity and convenience 
 Here you will be able to register your first user with role staff(0) or restraunter(1)
-
-If tools like Postman are used first of all acces and refresh tokes should be gathered from address
-http://127.0.0.1:8000/api/token where email and password of previously created user should be passed
-Also http://127.0.0.1:8000/api/token/refresh/ and http://127.0.0.1:8000/api/token/verify/ are allowed to
-interact with
-
-token expires each hour and refresh could be done during one day (24h)
-
 Main endpoints to interact with api are:
 http://127.0.0.1:8000/api/v1/user/ (allowed to everyone)
-Json example to build a user via API:
+Json example to build(POST) a user via API:
  {
         "name": "Test",
         "password": "test",
@@ -36,6 +28,31 @@ Json example to build a user via API:
         "is_active": true
     }
 
+If tools like Postman are used first of all acces and refresh tokes should be gathered from address
+http://127.0.0.1:8000/api/token where email and password of previously created user should be passed
+Example for token getiing toke, perform POST with body:
+{
+        
+        "name": "Test",
+        "password": "test",
+        "email": "test@testua.com",
+        "role": 0,
+        "is_active": true
+    }
+and get a response like:
+{
+    "refresh": "tokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentoken",
+    "access": "tokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentokentoken"
+}
+
+Also http://127.0.0.1:8000/api/token/refresh/ and http://127.0.0.1:8000/api/token/verify/ are allowed to
+interact with
+
+token expires each hour and refresh could be done during one day (24h)
+
+Than provide acces token in header with key Authorization and pass value in format JWT  tokentokentokentokentokentokenWNjZXNzIiwiZXhwIjoxNjkyNzg0MzQ3LCJpYXQiOjE2OTI3ODI4NDcsImp0aSI6Ijc3YWEwYWQyNjEzNDRhMWFiMWVkY2I0NzJjNDA4MDUwIiwidXNlcl9pZCI6M30.vSQeqbC8pT5Trt5xOgYMJEA9VzhPj4wMgrRCcDGCRUc
+
+Then perform GET operation on any of links as authorized user
 
 http://127.0.0.1:8000/api/v1/restaurant/ (allowed to view by staff and manage by restauranters)
 
