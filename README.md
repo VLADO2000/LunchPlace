@@ -66,6 +66,42 @@ http://127.0.0.1:8000/api/v1/vote/  (allow authorized staff to create only one o
                                             to perform opperations with votes)
 http://127.0.0.1:8000/api/v1/daymenu/ (Endpoint which return menu of the day or if rating is equal list of menues)
 
+In all case as database is empty you will recieve an empty list as a response. Let's try role of a restraunter at first, create soem restaurant and menu to it and than vote as user.
+For this we need to create new user, do as written below just relase role to 1 which mean role = "restauranter"
+{
+    "name": "Restauranter",
+    "password": "rest",
+    "email": "rest@rest.com",
+    "role": 1,
+    "is_active": true
+}
+
+and with this body perfrom token authorization same as with user-staff. You could just shrink body to
+{
+    
+    "password": "rest",
+    "email": "rest@rest.com"
+   
+}
+
+Now when we have token in our header let's create a restaurant by endpoint http://127.0.0.1:8000/api/v1/restaurant/ with body:
+{
+    "name": "PoseAtive",
+    "users_emails": "rest@rest.com"
+}
+and we will get as pesponse our result:
+{
+    "id": 2,
+    "name": "PoseAtive",
+    "created_at": "2023-08-24T10:39:15.192160Z",
+    "updated_at": "2023-08-24T10:39:15.192181Z",
+    "users_emails": [
+        "rest@rest.com"
+    ]
+}
+
+It's predictable than we should create our menu by endpoint http://127.0.0.1:8000/api/v1/menu/
+
 
 
 Folder test include two python files with tests for authorization and restaurant creation 
